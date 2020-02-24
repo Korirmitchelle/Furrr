@@ -112,6 +112,13 @@
                                     <constraint firstItem="bZd-JC-lE3" firstAttribute="centerX" secondItem="sFD-qf-qTp" secondAttribute="centerX" id="zpP-1R-kWb"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3TL-b2-C2S" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="10" y="144" width="394" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hIX-My-fna"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dyb-l1-3Z5">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="35"/>
                                 <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -122,6 +129,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="3TL-b2-C2S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="13f-Nm-D1H"/>
+                            <constraint firstItem="3TL-b2-C2S" firstAttribute="top" secondItem="zn1-J3-n7v" secondAttribute="bottom" constant="10" id="AXk-sz-aZw"/>
                             <constraint firstItem="Bkf-xP-Ws8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="IhC-j3-fAZ"/>
                             <constraint firstItem="zn1-J3-n7v" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="Q1w-GZ-AqH"/>
                             <constraint firstItem="sFD-qf-qTp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Vgx-RU-jmL"/>
@@ -129,6 +138,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zn1-J3-n7v" secondAttribute="trailing" constant="20" id="YVV-eD-InO"/>
                             <constraint firstItem="dyb-l1-3Z5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="brg-T6-Xul"/>
                             <constraint firstItem="Bkf-xP-Ws8" firstAttribute="top" secondItem="zn1-J3-n7v" secondAttribute="bottom" constant="10" id="bxG-9L-T8u"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3TL-b2-C2S" secondAttribute="trailing" constant="10" id="e8g-iA-wS7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sFD-qf-qTp" secondAttribute="trailing" constant="20" id="kqH-Ei-OUF"/>
                             <constraint firstItem="zn1-J3-n7v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="n3X-Dt-Fbo"/>
                             <constraint firstItem="sFD-qf-qTp" firstAttribute="top" secondItem="Bkf-xP-Ws8" secondAttribute="bottom" constant="20" id="ovD-Ue-Fne"/>
@@ -138,6 +148,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="animationView" destination="3TL-b2-C2S" id="YYd-Gf-7Pf"/>
                         <outlet property="beginButton" destination="Bkf-xP-Ws8" id="pZU-Ov-Aot"/>
                         <outlet property="countLabel" destination="Zba-Ql-QSZ" id="vN1-Rw-4Ua"/>
                         <outlet property="hundredthLabel" destination="68V-Um-l5f" id="4fu-to-F7q"/>
@@ -146,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="138"/>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
     </scenes>
 </document>

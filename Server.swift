@@ -9,7 +9,7 @@
 import Foundation
 
 class Server{
-    func doSomething(completion:((String?,Int,NSError?) -> Void)?){
+    func fetchData(completion:((String?,Int,NSError?) -> Void)?){
         DispatchQueue.global().async {
             DispatchQueue.concurrentPerform(iterations: 3) { index in
                 self.startLoad(index: index, completion: completion)
@@ -41,7 +41,7 @@ class Server{
     func parseData(index:Int,string:String,completion:((String?,Int,NSError?) -> Void)?){
         switch index {
         case 0:
-            getHundredth(index: index, string: string, completion: completion)
+            getHundredth(index: index, string: string, offset: 100, completion: completion)
         case 1:
             getEvery(index: index, string: string, separation: 10, completion: completion)
         default:
@@ -49,8 +49,8 @@ class Server{
         }
     }
     
-    func getHundredth(index:Int,string:String,completion:((String?,Int,NSError?) -> Void)?){
-        let hundredth = string.index(string.startIndex, offsetBy: 99)
+    func getHundredth(index:Int,string:String,offset:Int, completion:((String?,Int,NSError?) -> Void)?){
+        let hundredth = string.index(string.startIndex, offsetBy: offset - 1)
         let hundredthString = String(string[hundredth])
         completion?(hundredthString,index,nil)
     }
@@ -58,21 +58,20 @@ class Server{
     func getEvery(index:Int,string:String,separation:Int,completion:((String?,Int,NSError?) -> Void)?){
         let everyTenth = string.separate(every: separation, with: "*")
         let splitArray = everyTenth.split(separator: "*")
-        for word in splitArray{
-            guard let character = word.last else{return}
+        splitArray.forEach{
+            guard let character = $0.last else{return}
             completion?(String(character),index,nil)
+
         }
     }
     
     func getCount(index:Int,string:String,completion:((String?,Int,NSError?) -> Void)?){
         let wordsArray = string.split(separator: " ")
-        for word in wordsArray{
-            let count = String(word.count)
+        wordsArray.forEach{
+            let count = String($0.count)
             completion?(count,index,nil)
         }
     }
-    
-    
 }
 
 

@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var animationView: NVActivityIndicatorView!
     @IBOutlet weak var hundredthLabel: UILabel!
     @IBOutlet weak var tenthLabel: UILabel!
     @IBOutlet weak var beginButton: UIButton!
@@ -18,14 +20,36 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        animationView.type = .ballPulse
+        animationView.color = .systemPurple
+        animationView.isHidden = true
+        beginButton.isHidden = false
         beginButton.addTarget(self, action: #selector(fetchData), for: .touchUpInside)
         
     }
     @objc func fetchData(){
-        Server().doSomething(completion: getResults(string:position:error:))
+        Server().fetchData(completion: getResults(string:position:error:))
+        showAnimation()
+    }
+    
+    func showAnimation(){
+        DispatchQueue.main.async {
+            self.beginButton.isHidden = true
+            self.animationView.isHidden = false
+            self.animationView.startAnimating()
+        }
+    }
+    
+    func hideAnimation(){
+        DispatchQueue.main.async {
+            self.animationView.stopAnimating()
+            self.animationView.isHidden = true
+            self.beginButton.isHidden = false
+        }
     }
     
     func getResults(string:String?, position:Int?, error:NSError?){
+        hideAnimation()
         guard error == nil else {
             return
         }
@@ -40,7 +64,5 @@ class HomeViewController: UIViewController {
                 self.countLabel.text = string
             }
         }
-        
     }
-    
 }
